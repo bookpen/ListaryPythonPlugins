@@ -1,4 +1,5 @@
-
+.gitignore
 runtime/
 site-packages/
 .idea/
+Translation.json

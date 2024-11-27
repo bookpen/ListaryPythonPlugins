@@ -9,22 +9,21 @@ if "script" in os.getcwd():
 from script.utils.AuthV3Util import addAuthParams
 
 
-# 您的应用ID
-APP_KEY = '3819a4014cb59b13'
-# 您的应用密钥
-APP_SECRET = 'Ktr1OzzzhkruinoWYnQHsYkHT7PKz18S'
-
 def createRequest(en2cn=True):
-    '''
-    note: 将下列变量替换为需要请求的参数
-    '''
+
+    with open("Translation.json", "r") as f:
+        data = json.load(f)
+        APP_KEY = data["APP_KEY"]
+        APP_SECRET = data["APP_SECRET"]
+        en2cn_vocab_id = data["en2cn_vocab_id"]
+        cn2en_vocab_id = data["cn2en_vocab_id"]
     q = sys.argv[1]
     if en2cn:
-        vocab_id="A15C1D79EA6E412DACD001C33E5F9463"
+        vocab_id = en2cn_vocab_id
         lang_from = 'en'
         lang_to = 'zh-CHS'
     else:
-        vocab_id = "129E9C8D4A724CB186BDCE31969B79A7"
+        vocab_id = cn2en_vocab_id
         lang_to = 'en'
         lang_from = 'zh-CHS'
     data = {'q': q, 'from': lang_from, 'to': lang_to, 'vocabId': vocab_id}

@@ -3,4 +3,4 @@ import sys
 from script.Translate import createRequest
 
 sys.path.append("site-packages")
-createRequest(en2cn=True)
+createRequest(en2cn=False)
